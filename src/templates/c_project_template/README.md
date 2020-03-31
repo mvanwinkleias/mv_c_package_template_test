@@ -56,7 +56,7 @@ It may be important to not rerun `config` because that requires a `make distclea
 
 # Autotools
 
-This was borrowed from: https://github.com/cirosantilli/linux-cheat
+This was borrowed from: https://github.com/cirosantilli/linux-cheat/tree/master/autotools/hello-world
 
 GNU's build system.
 
