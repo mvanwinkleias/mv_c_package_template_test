@@ -23,7 +23,7 @@
 			"description" : "Link to ticket, or ticket ID"
 		}
 	],
-	"post-create-run" : "cd [% project_name %]; ",
+	"post-create-run" : "cd [% project_name %]; autoreconf --install ; ./configure",
 	"transforms" : [
 		{
 			"name" : "package_name",
