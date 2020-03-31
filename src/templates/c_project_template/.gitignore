@@ -7,3 +7,14 @@ configure
 depcomp
 install-sh
 missing
+
+# These are from after you run configure and make
+Makefile
+config.h
+config.log
+config.status
+src/.deps/
+src/Makefile
+src/[% project.project_name %]
+src/main.o
+stamp-h1

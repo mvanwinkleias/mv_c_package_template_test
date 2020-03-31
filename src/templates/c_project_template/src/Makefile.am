@@ -1,2 +1,2 @@
-bin_PROGRAMS = autotools_hello_world
-autotools_hello_world_SOURCES = main.c
+bin_PROGRAMS = [% project.project_name %]
+[% project.project_name %]_SOURCES = main.c
