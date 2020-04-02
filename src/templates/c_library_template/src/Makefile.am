@@ -1,5 +1,3 @@
-ACLOCAL_AMFLAGS = -I m4
-
 # bin_PROGRAMS = [% project.project_name %]
 #[% project.project_name %]_SOURCES = main.c
 # [% project.project_name %]_SOURCES = libautomake-library-test.c
@@ -19,8 +17,8 @@ AM_LDFLAGS =
 # AM_CFLAGS += -pthread
 # AM_LDFLAGS += -lpthread
 
-lib_LTLIBRARIES = lib[% project.project_name %].la
-include_HEADERS = [% project.project_name %].h
-lib[% project.project_name %]_la_SOURCES = [% project.project_name %].c
-lib[% project.project_name %]_la_LDFLAGS = -version-info 0:0:0
+lib_LTLIBRARIES = lib[% project.package_to_variable_name %].la
+include_HEADERS = [% project.package_to_variable_name %].h
+lib[% project.package_to_variable_name %]_la_SOURCES = [% project.package_to_variable_name %].c
+lib[% project.package_to_variable_name %]_la_LDFLAGS = -version-info 0:0:0
 
