@@ -15,6 +15,6 @@ config.log
 config.status
 src/.deps/
 src/Makefile
-src/[% project.project_name %]
+src/[% project.package_to_variable_name %]
 src/main.o
 stamp-h1
