@@ -1,6 +1,6 @@
-# bin_PROGRAMS = [% project.project_name %]
-#[% project.project_name %]_SOURCES = main.c
-# [% project.project_name %]_SOURCES = libautomake-library-test.c
+# bin_PROGRAMS = [% project.package_to_variable_name %]
+#[% project.package_to_variable_name %]_SOURCES = main.c
+# [% project.package_to_variable_name %]_SOURCES = [% project.package_to_variable_name %].c
 
 # These might be a good idea
 AM_CFLAGS = -std=c99 -pedantic -D_POSIX_C_SOURCE=200809L -Wall -Wextra

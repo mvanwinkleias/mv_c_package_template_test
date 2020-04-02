@@ -1,5 +1,5 @@
-bin_PROGRAMS = [% project.project_name %]
-[% project.project_name %]_SOURCES = main.c
+bin_PROGRAMS = [% project.package_to_variable_name %]
+[% project.package_to_variable_name %]_SOURCES = main.c
 
 # These might be a good idea
 .POSIX:
