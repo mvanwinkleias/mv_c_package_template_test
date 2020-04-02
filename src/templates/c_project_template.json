@@ -2,9 +2,9 @@
 	"prompts" : [
 		{
 			"name" : "project_name",
-			"fail_regex" : "[^0-9a-zA-Z_]",
+			"fail_regex" : "[^0-9a-zA-Z\\-]",
 			"prompt" : "Project Name: ",
-			"description" : "Contains only letters, numbers and underscores.  Required."
+			"description" : "Contains only letters, numbers and hyphens (-).  Required."
 		},
 		{
 			"name" : "summary",
@@ -23,11 +23,16 @@
 			"description" : "Link to ticket, or ticket ID"
 		}
 	],
-	"post-create-run" : "cd [% project_name %]; autoreconf --install ; ./configure",
+	"post-create-run" : "cd [% project_name %]; autoreconf --install ",
 	"transforms" : [
 		{
 			"name" : "package_name",
 			"transform" : "underscores_to_dashes",
+			"template_string" : "[% project_name %]"
+		},
+		{
+			"name" : "package_to_variable_name",
+			"transform" : "dashes_to_underscores",
 			"template_string" : "[% project_name %]"
 		}
 	],
