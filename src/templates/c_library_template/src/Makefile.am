@@ -3,6 +3,7 @@
 # [% project.package_to_variable_name %]_SOURCES = [% project.package_to_variable_name %].c
 
 # These might be a good idea
+.POSIX:
 AM_CFLAGS = -std=c99 -pedantic -D_POSIX_C_SOURCE=200809L -Wall -Wextra
 AM_LDFLAGS = 
 
