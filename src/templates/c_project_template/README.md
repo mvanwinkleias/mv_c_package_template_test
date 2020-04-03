@@ -1,5 +1,16 @@
-# Hello world
+# [% project.project_name %]
 
+[% project.description %]
+
+# Wiki Page
+
+* [% project.wiki_page %]
+
+# Ticket
+
+* [% project.ticket %]
+
+# Building
 Get started:
 
 ```
@@ -19,4 +30,5 @@ make dist-gzip
 # Copy the resulting file elsewhere, into it's own directory
 debmake -a (name-of-tar.gz) -i debuild
 ```
+
 
