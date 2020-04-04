@@ -1,9 +1,6 @@
 bin_PROGRAMS = [% project.package_to_variable_name %]
 [% project.package_to_variable_name %]_SOURCES = main.c
 
-dist_man_MANS = [% project.package_to_variable_name %].1
-info_TEXINFOS = [% project.package_to_variable_name %].texi
-
 # These might be a good idea
 .POSIX:
 AM_CFLAGS = -std=c99 -pedantic -D_POSIX_C_SOURCE=200809L -Wall -Wextra
