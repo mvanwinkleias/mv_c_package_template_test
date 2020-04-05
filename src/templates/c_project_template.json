@@ -23,7 +23,7 @@
 			"description" : "Link to ticket, or ticket ID"
 		}
 	],
-	"post-create-run" : "cd [% project_name %]; ./init_project.sh",
+	"post-create-run" : "cd [% project_name %]; chmod +x ./init_project.sh; ./init_project.sh",
 	"transforms" : [
 		{
 			"name" : "package_name",
