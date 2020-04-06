@@ -1,6 +1,5 @@
-# bin_PROGRAMS = [% project.package_to_variable_name %]
-#[% project.package_to_variable_name %]_SOURCES = main.c
-# [% project.package_to_variable_name %]_SOURCES = [% project.package_to_variable_name %].c
+bin_PROGRAMS = [% project.package_to_variable_name %]_runner
+[% project.package_to_variable_name %]_runner_SOURCES = main.c
 
 # These might be a good idea
 .POSIX:
@@ -15,8 +14,7 @@ AM_LDFLAGS =
 # This might not be the best way to handle adding these.
 # Quoting these doesn't seem to be a good idea.
 
-# AM_CFLAGS += -pthread
-# AM_LDFLAGS += -lpthread
+# AM_CFLAGS += -l[% project.package_to_variable_name %]
 
 lib_LTLIBRARIES = lib[% project.package_to_variable_name %].la
 include_HEADERS = [% project.package_to_variable_name %].h
