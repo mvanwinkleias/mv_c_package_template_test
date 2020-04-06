@@ -2,6 +2,6 @@
 #include <stdio.h>
 
 int main (void) {
-  puts ("Hello world from " PACKAGE_STRING);
-  return 0;
+	puts ("Hello world from " PACKAGE_STRING);
+	return 0;
 }
