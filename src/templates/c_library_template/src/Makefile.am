@@ -8,14 +8,14 @@ AM_LDFLAGS =
 # AM_CPPFLAGS+= -std=c++11
 
 # This might be how to link against things:
-# AM_CFLAGS += -l[% project.package_to_variable_name %]
+# AM_CFLAGS += -l[% project.project_name %]
 # AM_LDFLAGS += -lsome_library
 
 # === Programs ===
 
-bin_PROGRAMS = [% project.package_to_variable_name %]_runner
+bin_PROGRAMS = [% project.project_name %]_runner
 [% project.package_to_variable_name %]_runner_SOURCES = \
-	[% project.package_to_variable_name %].c \
+	[% project.project_name %].c \
 	main.c
 
 # Needed, as per:
@@ -28,13 +28,13 @@ bin_PROGRAMS = [% project.package_to_variable_name %]_runner
 # === Libraries ===
 # Libraries that are generated and to be installed by this:
 
-lib_LTLIBRARIES = lib[% project.package_to_variable_name %].la
+lib_LTLIBRARIES = lib[% project.project_name %].la
 
 lib[% project.package_to_variable_name %]_la_SOURCES = \
-	[% project.package_to_variable_name %].c \
-	[% project.package_to_variable_name %].h
+	[% project.project_name %].c \
+	[% project.project_name %].h
 
-include_HEADERS = [% project.package_to_variable_name %].h
+include_HEADERS = [% project.project_name %].h
 
 lib[% project.package_to_variable_name %]_la_LDFLAGS = -version-info 0:0:0
 
