@@ -1,7 +1,7 @@
 \input texinfo   @c -*-texinfo-*-
 @comment $Id@w{$}
 @comment %**start of header
-@setfilename [% project.package_to_variable_name %].info
+@setfilename [% project.project_name %].info
 @include version.texi
 @settitle GNU Sample @value{VERSION}
 @syncodeindex pg cp
