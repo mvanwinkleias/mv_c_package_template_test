@@ -1,14 +1,8 @@
 # Hello world
 
-Get started:
+## Getting Started
 
-```
-# This was already run for you:
-autoreconf --install
-libtoolize
-automake --add-missing
-autoreconf -fi
-```
+The target, initialize_project, in ExtraMakefile, has already been run for you.
 
 ```
 # To build:
@@ -16,10 +10,9 @@ autoreconf -fi
 make
 ```
 
+# To make a Debian Package
+
 ```
-# To build a Debian package:
-make dist-gzip
-# Copy the resulting file elsewhere, into it's own directory
-debmake -a (name-of-tar.gz) -i debuild
+make -f ExtraMakefile test_project_build
 ```
 

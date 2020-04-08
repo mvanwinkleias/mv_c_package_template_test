@@ -1,22 +1,8 @@
-# [% project.project_name %]
+# Hello world
 
-[% project.description %]
+## Getting Started
 
-# Wiki Page
-
-* [% project.wiki_page %]
-
-# Ticket
-
-* [% project.ticket %]
-
-# Building
-Get started:
-
-```
-# This was already run for you:
-autoreconf --install
-```
+The target, initialize_project, in ExtraMakefile, has already been run for you.
 
 ```
 # To build:
@@ -24,11 +10,9 @@ autoreconf --install
 make
 ```
 
-```
-# To build a Debian package:
-make dist-gzip
-# Copy the resulting file elsewhere, into it's own directory
-debmake -a (name-of-tar.gz) -i debuild
-```
+# To make a Debian Package
 
+```
+make -f ExtraMakefile test_project_build
+```
 
