@@ -4,13 +4,6 @@
 
 MAKEFILE_PATH = $(strip $(dir $(firstword $(MAKEFILE_LIST))))
 
-.PHONY: test_project_build
-test_project_build:
-	cd "$(MAKEFILE_PATH)/build" && \
-	../configure --prefix="$$(pwd)/install" && \
-	make dist-gzip && \
-	debmake -a [% project.project_name %]*.tar.gz -i debuild
-
 .PHONY: initialize_project
 initialize_project:
 	autoreconf --install
@@ -22,5 +15,12 @@ initialize_project:
 build_clean:
 	-cd "$(MAKEFILE_PATH)/build" && make distclean
 	-rm -r "$(MAKEFILE_PATH)/build/"*
+
+.PHONY: test_project_build
+test_project_build:
+	cd "$(MAKEFILE_PATH)/build" && \
+	../configure --prefix="$$(pwd)/install" && \
+	make dist-gzip && \
+	debmake -a [% project.project_name %]*.tar.gz -i "debuild -i -us -uc -b"
 
 
