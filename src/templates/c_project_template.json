@@ -31,6 +31,16 @@
 			"template_string" : "[% project_name %]"
 		},
 		{
+			"name" : "project_to_variable_name",
+			"transform" : "dashes_to_underscores",
+			"template_string" : "[% project_name %]"
+		},
+		{
+			"name" : "project_to_variable_name_to_upper_case",
+			"transform" : "upper_case",
+			"template_string" : "[% package_to_variable_name %]"
+		},
+		{
 			"name" : "package_to_variable_name",
 			"transform" : "dashes_to_underscores",
 			"template_string" : "[% project_name %]"
