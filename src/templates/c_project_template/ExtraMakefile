@@ -21,6 +21,6 @@ test_project_build:
 	cd "$(MAKEFILE_PATH)/build" && \
 	../configure --prefix="$$(pwd)/install" && \
 	make dist-gzip && \
-	debmake -a [% project.project_name %]*.tar.gz -i debuild
+	debmake -a [% project.project_name %]*.tar.gz -i "debuild -i -us -uc -b"
 
 
