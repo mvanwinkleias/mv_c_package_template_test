@@ -5,6 +5,7 @@ AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_FILES([
  Makefile
  src/Makefile
+ [% project.project_name %].pc
 ])
 AC_CONFIG_MACRO_DIRS([m4])
 
