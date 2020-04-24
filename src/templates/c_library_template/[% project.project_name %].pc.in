@@ -5,7 +5,7 @@ includedir=@includedir@
 
 Name: [% project.project_name %]
 Description: [% project.description %]
-URL: [% project.wiki %]
+URL: [% project.wiki_page %]
 Version: @VERSION@
 dnl Requires: <dependencies>
 Libs: -L${libdir} -l[% project.project_name %]
