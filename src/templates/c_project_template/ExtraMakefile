@@ -24,3 +24,30 @@ test_project_build:
 	debmake -a [% project.project_name %]*.tar.gz -i "debuild -i -us -uc -b"
 
 
+.PHONY: debug_build
+debug_build:
+	cd "$(MAKEFILE_PATH)/debug" && \
+	../configure --prefix="$$(pwd)/install" \
+		CPPFLAGS=-DDEBUG CFLAGS="-g -O0" && \
+	make && \
+	make install
+
+.PHONY: debug_run
+# In gdb:
+#	layout next
+#	run
+#
+# Commands
+# 	refresh - redraw the screen
+#  	ctrl + c - halt
+# 	n (next) - next line
+# 	step - descend
+debug_run:
+	cd "$(MAKEFILE_PATH)/debug/install/bin/" && \
+	gdb [% project.project_name %]*
+	
+
+.PHONY: debug_clean
+debug_clean:
+	-cd "$(MAKEFILE_PATH)/debug" && make distclean
+	-rm -r "$(MAKEFILE_PATH)/debug/"*
