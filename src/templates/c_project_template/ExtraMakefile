@@ -35,9 +35,11 @@ debug_build:
 .PHONY: debug_run
 # In gdb:
 #	layout next
+#	list
 #	run
 #
 # Commands
+#	break (main, or whatever subroutine)
 # 	refresh - redraw the screen
 #  	ctrl + c - halt
 # 	n (next) - next line
