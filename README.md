@@ -24,6 +24,20 @@ See
 
 * some_script.sh - does something.
 
+## Packages which might help
+
+### Ubuntu
+
+```
+build-essential
+fakeroot
+gdebi
+# mpi-default-dev
+autotools-dev
+autoconf
+texinfo
+```
+
 # Supplemental Documentation
 
 Supplemental documentation for this project can be found here:
