@@ -17,6 +17,7 @@ build_clean:
 	-rm -r "$(MAKEFILE_PATH)/build/"*
 
 .PHONY: build_dir
+build_dir:
 	mkdir -p "$(MAKEFILE_PATH)/build"
 
 .PHONY: test_build
