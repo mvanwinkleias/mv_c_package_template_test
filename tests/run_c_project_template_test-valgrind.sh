@@ -11,3 +11,4 @@ cd autopkgtest-mv-c-project
 make -f ExtraMakefile debug_build
 make -f ExtraMakefile debug_run_valgrind
 make -f ExtraMakefile debug_clean
+make -f ExtraMakefile test_project_build
