@@ -43,6 +43,15 @@ mpich.org
 Currently, Debian packages can be run by executing make commands.
 I haven't written templates for RPM packages for this yet.
 
+## Documentation
+
+Stub documentation for:
+
+* manual pages
+* texinfo
+
+has been created.
+
 ## Debugging
 
 For both ```c_project_template``` and ```c_library_template``` *make*
