@@ -75,6 +75,7 @@ dh-autoreconf
 autotools-dev
 autoconf
 texinfo
+debmake
 ```
 
 # Supplemental Documentation

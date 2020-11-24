@@ -18,6 +18,7 @@ build_clean:
 
 .PHONY: test_project_build
 test_project_build:
+	mkdir "$(MAKEFILE_PATH)/build"
 	cd "$(MAKEFILE_PATH)/build" && \
 	../configure --prefix="$$(pwd)/install" && \
 	make dist-gzip && \
