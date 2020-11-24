@@ -28,7 +28,7 @@ a way that requires the least amount of changes to a base project.
 These (currently) 3 templates attempt to do so.
 
 * c_project_template - contains a "simple" main.c , and stub code
-for how to link against sqlite and GTK
+for how to link against SQLite and GTK
 
 * c_library_template - contains a simple main.c, and links against
 a library located next to it
