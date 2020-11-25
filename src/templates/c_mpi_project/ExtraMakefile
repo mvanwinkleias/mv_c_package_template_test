@@ -34,3 +34,18 @@ test_deb_package_build: build_dir
 	../configure --prefix="$$(pwd)/install" && \
 	make dist-gzip && \
 	debmake -a [% project.project_name %]*.tar.gz -i "debuild -i -us -uc -b"
+
+debug_build:
+	mkdir -p "$(MAKEFILE_PATH)/debug"
+	cd "$(MAKEFILE_PATH)/debug" && \
+	../configure --prefix="$$(pwd)/install" \
+		--enable-g=dbg,mem,meminit \
+		CPPFLAGS="-DDEBUG -I/path/to/valgrind/includes" \
+		CFLAGS="-g -O0" && \
+	make && \
+	make install
+
+.PHONY: debug_run_valgrind
+debug_run_valgrind:
+	cd "$(MAKEFILE_PATH)/debug/install/bin/" && \
+	mpirun -n 2 valgrind ./[% project.project_name %]
