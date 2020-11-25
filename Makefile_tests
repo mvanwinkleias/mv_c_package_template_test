@@ -1,0 +1,3 @@
+MAKEFILE_PATH = $(strip $(dir $(firstword $(MAKEFILE_LIST))))
+
+.PHONY: 

@@ -16,16 +16,7 @@ test_c_project_template_setup: test_c_project_template_clean
 test_c_project_template_clean:
 	-rm -rf autopkgtest-mv-c-project
 
-.PHONY: test_c_project_template_valgrind
-test_c_project_template_valgrind: test_c_project_template_setup
+.PHONY: test_c_project_all_automatic_tests
+test_c_project_all_automatic_tests: test_c_project_template_setup
 	cd autopkgtest-mv-c-project && \
-	make -f ExtraMakefile debug_clean && \
-	make -f ExtraMakefile debug_build && \
-	make -f ExtraMakefile debug_run_valgrind
-
-.PHONY: test_c_project_template_project_build
-test_c_project_template_project_build: test_c_project_template_setup
-	cd autopkgtest-mv-c-project && \
-	make -f ExtraMakefile debug_clean && \
-	make -f ExtraMakefile test_project_build
-
+	make -f ExtraMakefile test_c_project_all_automatic
