@@ -5,8 +5,9 @@ AUTOMATION_GROUP ?= iasnetauto
 
 # Symbolically link things in src/bin to /usr/bin
 # 
-# symbolic_links-usr_bin = \
-#	mv-c-package-template-test_hello.sh \ 
+symbolic_links-usr_bin = \
+	ias_new_mpi_project.sh \
+
 # 	another_program.sh
 
 #######################

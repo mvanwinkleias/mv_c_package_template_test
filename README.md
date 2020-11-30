@@ -78,6 +78,17 @@ texinfo
 debmake
 ```
 
+### RPM Based Systems
+
+```
+texinfo
+mpich
+autoconf
+automake
+libtool
+openmpi-devel
+```
+
 # Supplemental Documentation
 
 Supplemental documentation for this project can be found here:
