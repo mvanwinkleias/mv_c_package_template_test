@@ -53,3 +53,7 @@ debug_build:
 debug_run_valgrind:
 	cd "$(MAKEFILE_PATH)/debug/install/bin/" && \
 	mpirun -n 2 valgrind ./[% project.project_name %]
+	# Keep in mind, for some reason the valgrind output for an MPI
+	# project isn't "Clean".  The above process could have worked fine,
+	# valgrind might show memory is leaking.  At this time I don't
+	# have an explanation
