@@ -27,6 +27,10 @@ test_build: build_dir
 	make && \
 	make install
 
+.PHONY: test_mpi_project_all_automatic
+test_mpi_project_all_automatic: \
+	debug_build \
+	debug_run_valgrind
 
 .PHONY: test_deb_package_build
 test_deb_package_build: build_dir
