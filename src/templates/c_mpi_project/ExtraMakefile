@@ -27,6 +27,10 @@ test_build: build_dir
 	make && \
 	make install
 
+.PHONY: test_mpi_project_all_automatic
+test_mpi_project_all_automatic: \
+	debug_build \
+	debug_run_valgrind
 
 .PHONY: test_deb_package_build
 test_deb_package_build: build_dir
@@ -34,3 +38,22 @@ test_deb_package_build: build_dir
 	../configure --prefix="$$(pwd)/install" && \
 	make dist-gzip && \
 	debmake -a [% project.project_name %]*.tar.gz -i "debuild -i -us -uc -b"
+
+debug_build:
+	mkdir -p "$(MAKEFILE_PATH)/debug"
+	cd "$(MAKEFILE_PATH)/debug" && \
+	../configure --prefix="$$(pwd)/install" \
+		--enable-g=dbg,mem,meminit \
+		CPPFLAGS="-DDEBUG -I/path/to/valgrind/includes" \
+		CFLAGS="-g -O0" && \
+	make && \
+	make install
+
+.PHONY: debug_run_valgrind
+debug_run_valgrind:
+	cd "$(MAKEFILE_PATH)/debug/install/bin/" && \
+	mpirun -n 2 valgrind ./[% project.project_name %]
+	# Keep in mind, for some reason the valgrind output for an MPI
+	# project isn't "Clean".  The above process could have worked fine,
+	# valgrind might show memory is leaking.  At this time I don't
+	# have an explanation

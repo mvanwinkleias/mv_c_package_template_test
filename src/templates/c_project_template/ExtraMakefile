@@ -18,6 +18,7 @@ build_clean:
 
 .PHONY: test_project_build
 test_project_build:
+	mkdir -p "$(MAKEFILE_PATH)/build"
 	cd "$(MAKEFILE_PATH)/build" && \
 	../configure --prefix="$$(pwd)/install" && \
 	make dist-gzip && \
@@ -25,6 +26,7 @@ test_project_build:
 
 
 .PHONY: debug_build
+# These flags are recommended if / when you use valgrind, or GDB
 debug_build:
 	cd "$(MAKEFILE_PATH)/debug" && \
 	../configure --prefix="$$(pwd)/install" \
@@ -46,10 +48,32 @@ debug_build:
 # 	step - descend
 debug_run:
 	cd "$(MAKEFILE_PATH)/debug/install/bin/" && \
-	gdb [% project.project_name %]*
+	gdb [% project.project_name %]
+
+.PHONY: debug_run_valgrind
+debug_run_valgrind:
+	cd "$(MAKEFILE_PATH)/debug/install/bin/" && \
+	valgrind ./[% project.project_name %]
 	
 
 .PHONY: debug_clean
 debug_clean:
 	-cd "$(MAKEFILE_PATH)/debug" && make distclean
 	-rm -r "$(MAKEFILE_PATH)/debug/"*
+
+.PHONY: test_c_project_all_automatic
+test_c_project_all_automatic: \
+	test_c_project_valgrind \
+	test_c_project_project_build
+	
+.PHONY: test_c_project_valgrind
+test_c_project_valgrind: \
+	debug_clean \
+	debug_build \
+	debug_run_valgrind
+
+.PHONY: test_c_project_project_build
+test_c_project_project_build: \
+	debug_clean \
+	test_project_build
+

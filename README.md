@@ -1,10 +1,10 @@
 # mv_c_package_template_test
 
-Here is an introduction to this project.
+Template files for Autotools C style projects
 
 # License
 
-copyright (C) 2017 Author, Institution
+copyright (C) 2020 Martin VanWinkle III, Institute for Advanced Study
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -22,7 +22,45 @@ See
 
 ## Description
 
-* some_script.sh - does something.
+When using Autotools it can be difficult to get up and running, and in
+a way that requires the least amount of changes to a base project.
+
+These (currently) 3 templates attempt to do so.
+
+* c_project_template - contains a "simple" main.c , and stub code
+for how to link against SQLite and GTK
+
+* c_library_template - contains a simple main.c, and links against
+a library located next to it
+
+* c_mpi_project - contains the "hello world" of mpi projects from
+mpich.org
+
+# Design Goals
+
+## Packages
+
+Currently, Debian packages can be run by executing make commands.
+I haven't written templates for RPM packages for this yet.
+
+## Documentation
+
+Stub documentation for:
+
+* manual pages
+* texinfo
+
+has been created.
+
+## Debugging
+
+For both ```c_project_template``` and ```c_library_template``` *make*
+targets have been defined for running:
+
+* valgrind
+* gdb
+
+# Usage
 
 ## Packages which might help
 
@@ -33,9 +71,22 @@ build-essential
 fakeroot
 gdebi
 # mpi-default-dev
+dh-autoreconf
 autotools-dev
 autoconf
 texinfo
+debmake
+```
+
+### RPM Based Systems
+
+```
+texinfo
+mpich
+autoconf
+automake
+libtool
+openmpi-devel
 ```
 
 # Supplemental Documentation
