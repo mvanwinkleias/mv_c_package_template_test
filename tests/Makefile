@@ -55,7 +55,7 @@ test_c_library_all_automatic_tests: test_c_library_template_setup
 # MPI Projects
 
 .PHONY: test_mpi_project_template_clean
-test_c_project_template_clean:
+test_mpi_project_template_clean:
 	-rm -rf autopkgtest-mv-c-mpi-project
 
 .PHONY: test_mpi_project_template_setup
