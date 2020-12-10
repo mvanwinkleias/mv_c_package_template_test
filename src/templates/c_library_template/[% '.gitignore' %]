@@ -32,3 +32,4 @@ doc/*.info
 *.swo
 
 build
+debug

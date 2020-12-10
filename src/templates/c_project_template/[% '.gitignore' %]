@@ -31,3 +31,5 @@ doc/*.info
 *.swp
 *.swo
 
+build
+debug
