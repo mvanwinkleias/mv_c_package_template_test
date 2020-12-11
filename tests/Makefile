@@ -1,9 +1,16 @@
 MAKEFILE_PATH := $(strip $(dir $(firstword $(MAKEFILE_LIST))))
 
+makefile_dir := $(realpath $(MAKEFILE_PATH))
+git_cheap_init_and_checkin := "$(makefile_dir)/cheap_git_init_and_checkin.sh"
+git_porcelain := "$(makefile_dir)/git-porcelain.sh"
+
 .PHONY: debug
 debug:
-	echo "$(MAKEFILE_PATH)"
-	echo "$(MAKEFILE_PATH)/c_project_template_test-answers.txt"
+	@echo "$(MAKEFILE_PATH)"
+	@echo "$(MAKEFILE_PATH)/c_project_template_test-answers.txt"
+	@echo "git_cheap_init_and_checkin: $(git_cheap_init_and_checkin)"
+	@echo "git_porcelain: $(git_porcelain)"
+	
 
 .PHONY: test_all
 test_all: \
@@ -28,11 +35,14 @@ test_c_project_template_setup: test_c_project_template_clean
 	ias_package_shell.pl \
 		--project-template-dir "$(MAKEFILE_PATH)/../src/templates/c_project_template" \
 		--project-control-file "$(MAKEFILE_PATH)/../src/templates/c_project_template.json"
+	
+	cd autopkgtest-mv-c-project && $(git_cheap_init_and_checkin)
 
 .PHONY: test_c_project_all_automatic_tests
 test_c_project_all_automatic_tests: test_c_project_template_setup
 	cd autopkgtest-mv-c-project && \
-	make -f ExtraMakefile test_c_project_all_automatic
+	make -f ExtraMakefile test_c_project_all_automatic && \
+	$(git_porcelain)
 
 # C Library Projects
 .PHONY: test_c_library_template_clean
@@ -46,10 +56,13 @@ test_c_library_template_setup: test_c_library_template_clean
 		--project-template-dir "$(MAKEFILE_PATH)/../src/templates/c_library_template" \
 		--project-control-file "$(MAKEFILE_PATH)/../src/templates/c_library_template.json"
 
+	cd autopkgtest-mv-c-library && $(git_cheap_init_and_checkin) 
+
 .PHONY: test_c_library_all_automatic_tests
 test_c_library_all_automatic_tests: test_c_library_template_setup
 	cd autopkgtest-mv-c-library && \
-	make -f ExtraMakefile test_c_project_all_automatic
+	make -f ExtraMakefile test_c_project_all_automatic && \
+	$(git_porcelain)
 
 
 # MPI Projects
@@ -65,8 +78,11 @@ test_mpi_project_template_setup: test_c_project_template_clean
 		--project-template-dir "$(MAKEFILE_PATH)/../src/templates/c_mpi_project" \
 		--project-control-file "$(MAKEFILE_PATH)/../src/templates/c_mpi_project.json"
 
+	cd autopkgtest-mv-c-mpi-project && $(git_cheap_init_and_checkin)
+
 .PHONY: test_mpi_project_all_automatic_tests
 test_mpi_project_all_automatic_tests: test_mpi_project_template_setup
 	cd autopkgtest-mv-c-mpi-project && \
-	make -f ExtraMakefile test_mpi_project_all_automatic
+	make -f ExtraMakefile test_mpi_project_all_automatic && \
+	$(git_porcelain)
 
