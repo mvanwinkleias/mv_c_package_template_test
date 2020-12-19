@@ -1,3 +1,5 @@
+# [% # This file (as a project template) is inside of the common directory. %]
+
 init_project.sh
 
 Makefile.in
@@ -31,5 +33,8 @@ doc/*.info
 *.swp
 *.swo
 
+*.glade
+
 build
 debug
+

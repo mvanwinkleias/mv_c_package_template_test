@@ -6,4 +6,17 @@
 
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 stuff_dir="$script_dir/stuff"
-cp -r "$stuff_dir/"* "${script_dir}/../c_project_template/"
+
+template_dirs=( \
+	"${script_dir}/../c_project_template/" \
+	"${script_dir}/../c_library_template/" \
+	"${script_dir}/../c_mpi_project/" \
+)
+
+for template_dir in "${template_dirs[@]}"
+do
+    # echo "$template_dir is a template dir"
+	cp -r "$stuff_dir/"* "$template_dir/"
+done
+
+exit 0
