@@ -37,7 +37,7 @@ test_deb_package_build: build_dir
 	cd "$(MAKEFILE_PATH)/build" && \
 	../configure --prefix="$$(pwd)/install" && \
 	make dist-gzip && \
-	debmake -a [% project.project_name %]*.tar.gz -i "debuild -i -us -uc -b"
+	debmake -a [% project.project_name %]-*.tar.gz -i "debuild -i -us -uc -b"
 
 debug_build:
 	mkdir -p "$(MAKEFILE_PATH)/debug"
