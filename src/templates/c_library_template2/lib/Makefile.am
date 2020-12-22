@@ -14,6 +14,8 @@ AM_LDFLAGS =
 
 # === Libraries ===
 # Libraries that are generated and to be installed by this:
+pkgconfigdir = ${libdir}/pkgconfig
+pkgconfig_DATA = [% project.project_name %].pc
 
 lib_LTLIBRARIES = lib[% project.project_name %].la
 
