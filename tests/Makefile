@@ -14,6 +14,7 @@ debug:
 
 .PHONY: test_all
 test_all: \
+	clean_all \
 	test_c_project_all_automatic_tests \
 	test_c_library_all_automatic_tests \
 	test_mpi_project_all_automatic_tests

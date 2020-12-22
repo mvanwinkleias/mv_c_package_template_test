@@ -21,6 +21,7 @@ test_project_build:
 	mkdir -p "$(MAKEFILE_PATH)/build"
 	cd "$(MAKEFILE_PATH)/build" && \
 	../configure --prefix="$$(pwd)/install" && \
+	make distcheck && \
 	make dist-gzip && \
 	debmake -a [% project.project_name %]-*.tar.gz -i "debuild -i -us -uc -b"
 
