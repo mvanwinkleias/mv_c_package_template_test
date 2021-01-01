@@ -11,4 +11,7 @@ AC_CONFIG_FILES([
  Makefile
  src/Makefile
 ])
+AC_CONFIG_MACRO_DIRS([m4])
+
+LT_INIT
 AC_OUTPUT
