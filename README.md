@@ -25,7 +25,7 @@ See
 When using Autotools it can be difficult to get up and running, and in
 a way that requires the least amount of changes to a base project.
 
-These (currently) 3 templates attempt to do so.
+These (currently) 4 templates attempt to do so.
 
 * c_project_template - contains a "simple" main.c , and stub code
 for how to link against SQLite and GTK
@@ -33,10 +33,65 @@ for how to link against SQLite and GTK
 * c_library_template - contains a simple main.c, and links against
 a library located next to it
 
+* c_library_template2 - similar to c_library_template, except libraries
+are located in lib/
+
 * c_mpi_project - contains the "hello world" of mpi projects from
 mpich.org
 
 # Design Goals
+
+## Linking Against Libraries
+
+Examples show how to link against both pkgconfig style libraries
+and just by adding options to the apropriate entries related to *ld*.
+
+## pkgconfig
+
+The "library" templates correctly use pkgconfig so that when a project
+wants to use pkgconfig to link against the libraries, it works.
+
+## Development Cycle
+
+I find myself doing the following often:
+
+```
+mkdir build
+cd build
+../configure --prefix=`pwd`/install
+```
+
+And when I change the source code:
+
+```
+make
+./src/some_program
+```
+
+I believe that (short of modifying the files related to autotools,
+interacting with revision control, etc)
+editing, and running make should be all that's required in a development
+cycle.
+
+### Design Patterns 
+
+The C templates go from simple to what I'd call "medium" complexity.  Adding source
+files to a project shouldn't be difficult, and should follow the patterns
+that have already been laid out.
+
+### Revision Control
+
+Transient files related to building the project are not checked in.
+I believe I have checked in what needs to be.  I'm currently uncertain if
+*libtool* should / needs to be checked in with the project.
+
+### Data Files
+
+This feature hasn't been merged into this branch, but a goal is to be able to
+not need to reinstall the data files in order to test.  A configure option,
+*use_project_datadir=1*, has been created which causes the DATADIR to always refer
+to data/ in the project directory.  When building the project for installation, don't use
+that option and data files should be installed into the correct place.
 
 ## Packages
 
@@ -54,11 +109,14 @@ has been created.
 
 ## Debugging
 
-For both ```c_project_template``` and ```c_library_template``` *make*
+For all C / MPI style projects ``` *make*
 targets have been defined for running:
 
 * valgrind
 * gdb
+
+The valgrind run for a project that uses *mpic* complains about memory
+leaks.  I haven't found out how to avoid that.
 
 # Usage
 
