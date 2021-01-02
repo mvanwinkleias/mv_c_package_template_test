@@ -29,6 +29,8 @@ doc/stamp-vti
 doc/version.texi
 doc/*.info
 
+libtool
+
 *~
 *.swp
 *.swo
