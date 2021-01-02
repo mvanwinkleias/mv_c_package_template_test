@@ -19,7 +19,7 @@ config.log
 config.status
 src/.deps/
 src/Makefile
-src/[% project.package_to_variable_name %]
+src/[% project.project_name %]_runner
 src/*.o
 stamp-h1
 
@@ -28,6 +28,17 @@ doc/[% project.package_to_variable_name %].info
 doc/stamp-vti
 doc/version.texi
 doc/*.info
+
+# If you compile things in the project directory, this stuff gets created:
+lib/.deps
+lib/.libs
+lib/*.lo
+lib/*.o
+lib/*.pc
+lib/*.la
+libtool
+src/.libs
+
 
 *~
 *.swp
