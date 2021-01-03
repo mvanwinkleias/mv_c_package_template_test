@@ -1,6 +1,20 @@
+###### Determine where to load data files from
+if conditional_use_project_datadir
+datadir_path = $(srcdir)/../data
+else
+datadir_path = $(pkgdatadir)
+endif
+
 # These might be a good idea
 .POSIX:
-AM_CFLAGS = -std=c99 -pedantic -D_POSIX_C_SOURCE=200809L -Wall -Wextra
+AM_CFLAGS = \
+	-std=c99 \
+	-pedantic \
+	-D_POSIX_C_SOURCE=200809L \
+	-Wall \
+	-Wextra \
+	-DDATADIR=\"$(datadir_path)\"
+
 AM_LDFLAGS = 
 
 bin_PROGRAMS = [% project.project_name %]

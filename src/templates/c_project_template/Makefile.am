@@ -1,6 +1,9 @@
 ACLOCAL_AMFLAGS = -I m4
 
-SUBDIRS = src
+SUBDIRS = \
+	src \
+	data
+
 dist_doc_DATA = README.md
 
 dist_man_MANS = doc/[% project.project_name %].1
