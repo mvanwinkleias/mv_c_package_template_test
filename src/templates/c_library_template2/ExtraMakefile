@@ -30,10 +30,12 @@ test_project_build:
 # These flags are recommended if / when you use valgrind, or GDB
 debug_build:
 	cd "$(MAKEFILE_PATH)/debug" && \
-	../configure --prefix="$$(pwd)/install" \
-		CPPFLAGS=-DDEBUG CFLAGS="-g -O0" && \
-	make && \
-	make install
+	../configure \
+		--prefix="$$(pwd)/install" \
+		CPPFLAGS=-DDEBUG \
+		CFLAGS="-g -O0" \
+		&& \
+	make 
 
 .PHONY: debug_run
 # In gdb:
@@ -48,12 +50,12 @@ debug_build:
 # 	n (next) - next line
 # 	step - descend
 debug_run:
-	cd "$(MAKEFILE_PATH)/debug/install/bin/" && \
+	cd "$(MAKEFILE_PATH)/debug/src" && \
 	gdb [% project.project_name %]
 
 .PHONY: debug_run_valgrind
 debug_run_valgrind:
-	cd "$(MAKEFILE_PATH)/debug/install/bin/" && \
+	cd "$(MAKEFILE_PATH)/debug/src" && \
 	valgrind ./[% project.project_name %]_runner
 	
 

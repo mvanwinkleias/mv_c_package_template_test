@@ -47,12 +47,11 @@ debug_build:
 		--enable-g=dbg,mem,meminit \
 		CPPFLAGS="-DDEBUG -I/path/to/valgrind/includes" \
 		CFLAGS="-g -O0" && \
-	make && \
-	make install
+	make 
 
 .PHONY: debug_run_valgrind
 debug_run_valgrind:
-	cd "$(MAKEFILE_PATH)/debug/install/bin/" && \
+	cd "$(MAKEFILE_PATH)/debug/src" && \
 	mpirun -n 2 valgrind ./[% project.project_name %]
 	# Keep in mind, for some reason the valgrind output for an MPI
 	# project isn't "Clean".  The above process could have worked fine,
