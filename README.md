@@ -41,6 +41,39 @@ mpich.org
 
 # Design Goals
 
+## Everything Should Just Work
+
+These things are automatically tested on each project:
+
+* configure
+* make distcheck
+* make dist-gzip
+* make
+* make install
+* debmake ... (to get a debian package)
+
+Manual tests:
+
+The following things are not automatically tested:
+
+* pkgconfig for a project from a *library* template works
+* The examples for using pkgconfig to compile against GTK, or SQLite (for example)
+in a *c_project_template*
+
+## Non-interference With Autotools "Style"
+
+There are things that have been stated as against the philosphy of Autotools.
+
+Currently, the only questionable thing (I know of) that might be going against
+the philosophy is a configure option, *use_project_data_dir=1*,
+in *c_project_tempalte* to cause the DATADIR to refer to the *data* directory of
+the project using a relative path.  Even though the DATADIR option can be
+specified as an argument, making it a flag with a unique name seemed convienent. 
+
+A file, *ExtraMakefile* contains make targets for debug builds.  Although the
+project maintainer shouldn't need to worry about things like debug bilds,
+it is considered okay for examples to be provided.
+
 ## Linking Against Libraries
 
 Examples show how to link against both pkgconfig style libraries
@@ -82,15 +115,14 @@ that have already been laid out.
 ### Revision Control
 
 Transient files related to building the project are not checked in.
-I believe I have checked in what needs to be.  I'm currently uncertain if
-*libtool* should / needs to be checked in with the project.
+I believe I have checked in what needs to be.
 
 ### Data Files
 
-This feature hasn't been merged into this branch, but a goal is to be able to
-not need to reinstall the data files in order to test.  A configure option,
-*use_project_datadir=1*, has been created which causes the DATADIR to always refer
-to data/ in the project directory.  When building the project for installation, don't use
+In *c_project_template*, a  configure option, *use_project_datadir=1*,
+has been added which causes
+the DATADIR to always refer to data/ in the project directory.
+When building the project for installation, don't use
 that option and data files should be installed into the correct place.
 
 ## Packages
@@ -117,6 +149,10 @@ targets have been defined for running:
 
 The valgrind run for a project that uses *mpic* complains about memory
 leaks.  I haven't found out how to avoid that.
+
+# Known Issues
+
+* valgrind for an mpi style project complains about memory leaks
 
 # Usage
 
