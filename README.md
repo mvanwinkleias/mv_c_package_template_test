@@ -50,7 +50,7 @@ These things are automatically tested on each project:
 * make dist-gzip
 * make
 * make install
-* debmake ... (to get a debian package)
+* debmake ... (to get a Debian package)
 
 Manual tests:
 
@@ -62,22 +62,22 @@ in a *c_project_template*
 
 ## Non-interference With Autotools "Style"
 
-There are things that have been stated as against the philosphy of Autotools.
+There are things that have been stated as against the philosophy of Autotools.
 
 Currently, the only questionable thing (I know of) that might be going against
 the philosophy is a configure option, *use_project_data_dir=1*,
-in *c_project_tempalte* to cause the DATADIR to refer to the *data* directory of
+in *c_project_template* to cause the DATADIR to refer to the *data* directory of
 the project using a relative path.  Even though the DATADIR option can be
-specified as an argument, making it a flag with a unique name seemed convienent. 
+specified as an argument, making it a flag with a unique name seemed convenient. 
 
 A file, *ExtraMakefile* contains make targets for debug builds.  Although the
-project maintainer shouldn't need to worry about things like debug bilds,
+project maintainer shouldn't need to worry about things like debug builds,
 it is considered okay for examples to be provided.
 
 ## Linking Against Libraries
 
 Examples show how to link against both pkgconfig style libraries
-and just by adding options to the apropriate entries related to *ld*.
+and just by adding options to the appropriate entries related to *ld*.
 
 ## pkgconfig
 
