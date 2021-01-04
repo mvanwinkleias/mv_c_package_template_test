@@ -23,8 +23,6 @@ src/[% project.project_name %]
 src/*.o
 stamp-h1
 
-libtool
-
 doc/.dirstamp
 doc/[% project.package_to_variable_name %].info
 doc/stamp-vti

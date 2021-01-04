@@ -19,6 +19,7 @@ config.log
 config.status
 src/.deps/
 src/Makefile
+src/[% project.project_name %]
 src/[% project.project_name %]_runner
 src/*.o
 stamp-h1
