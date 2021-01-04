@@ -141,7 +141,7 @@ has been created.
 
 ## Debugging
 
-For all C / MPI style projects ``` *make*
+For all C / MPI style projects *make*
 targets have been defined for running:
 
 * valgrind
