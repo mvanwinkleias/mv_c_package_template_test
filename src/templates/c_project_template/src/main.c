@@ -27,7 +27,8 @@ int dump_a_text_file (void)
 	return 0; 
 }
 
-int main (void) {
+int main(int argc, char *argv[])
+{
 	puts ("Hello world from " PACKAGE_STRING);
 
 	dump_a_text_file();
