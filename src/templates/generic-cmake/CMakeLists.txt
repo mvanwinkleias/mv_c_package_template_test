@@ -32,6 +32,10 @@ ELSE()
 
 ENDIF()
 
+if((APPLE))
+  set(ENV{PKG_CONFIG_PATH} "$ENV{PKG_CONFIG_PATH}:/usr/local/opt/curl/lib/pkgconfig")
+endif()
+
 set(PROJECT_NAME [% project.package_name %])
 
 file(GLOB PROJECT_HEADERS *.h version.h) 
