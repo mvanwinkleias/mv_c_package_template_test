@@ -5,6 +5,9 @@ ELSE()
   cmake_minimum_required(VERSION 3.1)
 ENDIF()
 
+# find_package(CURL REQUIRED)
+# include_directories(${CURL_INCLUDE_DIR})
+
 project([% project.package_name %])
 include(GNUInstallDirs)
 find_package(PkgConfig REQUIRED)
@@ -60,6 +63,8 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 )
 
 target_link_libraries(${PROJECT_NAME} ) # libraries went here
+# target_link_libraries(${PROJECT_NAME}  ${CURL_LIBRARIES})
+
 if (CMAKE_SYSTEM_NAME MATCHES "OpenBSD")
   target_link_libraries(${PROJECT_NAME} "-lkvm")
 endif (CMAKE_SYSTEM_NAME MATCHES "OpenBSD")
