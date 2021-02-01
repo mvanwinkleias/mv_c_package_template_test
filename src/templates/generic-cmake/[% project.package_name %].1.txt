@@ -1,0 +1,20 @@
+:man source:   [% project.package_name %]
+:man manual:   [% project.package_name %]
+
+[% project.package_to_variable_name_to_upper_case %](1)
+========
+
+
+NAME
+----
+[% project.package_name %] - This is what the project does
+
+SYNOPSIS
+--------
+[verse]
+*[% project.package_name %]* [ --version, -v | --help, -h ]
+
+DESCRIPTION
+-----------
+'[% project.package_name %]' is something that does something
+

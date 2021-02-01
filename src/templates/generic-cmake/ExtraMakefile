@@ -1,0 +1,3 @@
+.PHONY: initialize_project
+initialize_project:
+	chmod +x "[% project.package_name %]-version-gen"
