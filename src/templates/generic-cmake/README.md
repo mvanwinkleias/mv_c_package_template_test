@@ -1,1 +1,4 @@
-# Here is a readme
+# [% project.package_name %]
+
+[% project.description %]
+
