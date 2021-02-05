@@ -42,7 +42,7 @@ bin_PROGRAMS = [% project.project_name %]
 
 # Here we can put things that were found by (for example) pkgconfig:
 # [% project.package_to_variable_name %]_CFLAGS += $(SQLITE_CFLAGS) $(GTK_CFLAGS)
-# [% project.package_to_variable_name %]_LDFLAGS += $(SQLITE_CFLAGS) $(GTK_CFLAGS)
+# [% project.package_to_variable_name %]_LDFLAGS += $(SQLITE_LIBS) $(GTK_LIBS)
 
 # LDADD is used to link against libraries not found by configure.
 # [% project.package_to_variable_name %]_LDADD = 
