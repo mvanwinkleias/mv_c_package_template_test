@@ -54,6 +54,24 @@ mpich.org
 
 ## Everything Should Just Work
 
+The goal is to ask for a minimum amount of information to provide a
+fully functioning project.
+
+## All Systems
+
+### Design Patterns 
+
+The C templates go from simple to what I'd call "medium" complexity.  Adding source
+files to a project shouldn't be difficult, and should follow the patterns
+that have already been laid out.
+
+### Revision Control
+
+Transient files related to building the project are not checked in.
+I believe I have checked in what needs to be.
+
+### Autotools
+
 These things are automatically tested on each project:
 
 * configure
@@ -71,7 +89,7 @@ The following things are not automatically tested:
 * The examples for using pkgconfig to compile against GTK, or SQLite (for example)
 in a *c_project_template*
 
-## Non-interference With Autotools "Style"
+#### Non-interference With Autotools "Style"
 
 There are things that have been stated as against the philosophy of Autotools.
 
@@ -85,17 +103,17 @@ specified as an argument, making it a flag with a unique name seemed convenient.
 project maintainer shouldn't need to worry about things like debug builds,
 it is considered okay for examples to be provided.
 
-## Linking Against Libraries
+#### Linking Against Libraries
 
 Examples show how to link against both pkgconfig style libraries
 and just by adding options to the appropriate entries related to *ld*.
 
-## pkgconfig
+#### pkgconfig
 
 The "library" templates correctly use pkgconfig so that when a project
 wants to use pkgconfig to link against the libraries, it works.
 
-## Development Cycle
+#### Development Cycle
 
 I find myself doing the following often:
 
@@ -117,18 +135,8 @@ interacting with revision control, etc)
 editing, and running make should be all that's required in a development
 cycle.
 
-### Design Patterns 
 
-The C templates go from simple to what I'd call "medium" complexity.  Adding source
-files to a project shouldn't be difficult, and should follow the patterns
-that have already been laid out.
-
-### Revision Control
-
-Transient files related to building the project are not checked in.
-I believe I have checked in what needs to be.
-
-### Data Files
+#### Data Files
 
 In *c_project_template*, a  configure option, *use_project_datadir=1*,
 has been added which causes
@@ -136,12 +144,12 @@ the DATADIR to always refer to data/ in the project directory.
 When building the project for installation, don't use
 that option and data files should be installed into the correct place.
 
-## Packages
+#### Packages
 
 Currently, Debian packages can be run by executing make commands.
 I haven't written templates for RPM packages for this yet.
 
-## Documentation
+#### Documentation
 
 Stub documentation for:
 
@@ -150,7 +158,7 @@ Stub documentation for:
 
 has been created.
 
-## Debugging
+#### Debugging
 
 For all C / MPI style projects *make*
 targets have been defined for running:
@@ -161,15 +169,13 @@ targets have been defined for running:
 The valgrind run for a project that uses *mpic* complains about memory
 leaks.  I haven't found out how to avoid that.
 
-# Known Issues
+#### Known Issues
 
 * valgrind for an mpi style project complains about memory leaks
 
-# Usage
+#### Packages which might help
 
-## Packages which might help
-
-### Ubuntu
+##### Ubuntu
 
 ```
 build-essential
@@ -183,7 +189,7 @@ texinfo
 debmake
 ```
 
-### RPM Based Systems
+##### RPM Based Systems
 
 ```
 texinfo
