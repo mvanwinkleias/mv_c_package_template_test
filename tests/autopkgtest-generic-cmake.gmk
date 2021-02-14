@@ -1,0 +1,20 @@
+# generic-cmake
+.PHONY: test_generic_cmake_template_clean
+test_generic_cmake_template_clean:
+	-rm -rf autopkgtest-generic-cmake
+
+.PHONY: test_generic_cmake_template_setup
+test_generic_cmake_template_setup: test_generic_cmake_template_clean
+	cat "$(MAKEFILE_PATH)/generic_cmake-answers.txt" | \
+	ias_package_shell.pl \
+		--project-template-dir "$(MAKEFILE_PATH)/../src/templates/generic-cmake" \
+		--project-control-file "$(MAKEFILE_PATH)/../src/templates/generic-cmake.json"
+	
+	cd autopkgtest-generic-cmake && $(git_cheap_init_and_checkin)
+
+.PHONY: test_generic_cmake_all_automatic_tests
+test_generic_cmake_all_automatic_tests: test_generic_cmake_template_setup
+	cd autopkgtest-generic-cmake && \
+	make -f ExtraMakefile test_generic_cmake_all_automatic && \
+	$(git_porcelain)
+

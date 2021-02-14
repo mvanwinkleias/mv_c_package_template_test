@@ -1,0 +1,4 @@
+autopkgtest-generic-cmake
+Automated test build
+https://example.com/some_wiki_page
+some_ticket_number

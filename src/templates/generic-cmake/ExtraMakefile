@@ -1,3 +1,8 @@
 .PHONY: initialize_project
 initialize_project:
 	chmod +x "[% project.package_name %]-version-gen"
+
+.PHONY: test_generic_cmake_all_automatic
+test_generic_cmake_all_automatic:
+	make
+	build/autopkgtest-generic-cmake --version

@@ -1,6 +1,6 @@
 MAKEFILE_PATH := $(strip $(dir $(firstword $(MAKEFILE_LIST))))
 MAKEFILE_NAME := $(firstword $(MAKEFILE_LIST))
-TESTS_INCLUDE_PATH=$(MAKEFILE_PATH)
+TESTS_INCLUDE_PATH=$(MAKEFILE_PATH)/make
 
 makefile_dir := $(realpath $(MAKEFILE_PATH))
 git_cheap_init_and_checkin := "$(makefile_dir)/cheap_git_init_and_checkin.sh"
@@ -25,20 +25,19 @@ test_all: \
 	test_c_project_all_automatic_tests \
 	test_c_library_all_automatic_tests \
 	test_c_library2_all_automatic_tests \
-	test_mpi_project_all_automatic_tests \
-	test_generic_cmake_all_automatic_tests
+	test_mpi_project_all_automatic_tests
 
 .PHONY: clean_all
 clean_all: \
 	test_c_project_template_clean \
 	test_c_library_template_clean \
 	test_c_library_template2_clean \
-	test_mpi_project_template_clean \
-	test_generic_cmake_template_clean
+	test_mpi_project_template_clean
 
 
 include $(TESTS_INCLUDE_PATH)/autopkgtest-mv-c-project.gmk
 include $(TESTS_INCLUDE_PATH)/autopkgtest-mv-c-library.gmk
 include $(TESTS_INCLUDE_PATH)/autopkgtest-mv-c-library2.gmk
 include $(TESTS_INCLUDE_PATH)/autopkgtest-mv-c-mpi-project.gmk
+
 include $(TESTS_INCLUDE_PATH)/autopkgtest-generic-cmake.gmk
