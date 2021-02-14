@@ -5,7 +5,7 @@ Summary:
 
 License:        GPLv2
 URL:            https://example.com/[% project.package_name %]
-Source0:        project.package_name-0.0.1.tgz
+Source0:        [% project.package_name %]-0.0.1.tgz
 
 BuildRequires:  asciidoc
 # Requires:       
