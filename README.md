@@ -1,6 +1,8 @@
 # mv_c_package_template_test
 
-Template files for Autotools C style projects
+Template files for:
+* Autotools style projects which use C and C++
+* cmake
 
 # License
 
@@ -20,12 +22,17 @@ See
 
 * http://www.gnu.org/licenses/
 
-## Description
+# Description
 
-When using Autotools it can be difficult to get up and running, and in
-a way that requires the least amount of changes to a base project.
+When starting with any build system it can be difficult to get started
+with something simple, and then mature.
 
-These (currently) 4 templates attempt to do so.
+The templates provided in this project "mimic" larger
+projects and mature projects' layout.  The goal is for growth to
+take the form of "filling in the blanks", instead of "rethinking
+everything" with regard to how a project is laid out.
+
+## Autotools
 
 * c_project_template - contains a "simple" main.c , and stub code
 for how to link against SQLite and GTK
@@ -38,6 +45,10 @@ are located in lib/
 
 * c_mpi_project - contains the "hello world" of mpi projects from
 mpich.org
+
+## CMake
+
+* generic-cmake - compiles a binary with a --version option
 
 # Design Goals
 
