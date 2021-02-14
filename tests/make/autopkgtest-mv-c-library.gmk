@@ -1,0 +1,20 @@
+# C Library Projects
+.PHONY: test_c_library_template_clean
+test_c_library_template_clean:
+	-rm -rf autopkgtest-mv-c-library
+
+.PHONY: test_c_library_template_setup
+test_c_library_template_setup: test_c_library_template_clean
+	cat "$(MAKEFILE_PATH)/c_library_template_test-answers.txt" | \
+	ias_package_shell.pl \
+		--project-template-dir "$(MAKEFILE_PATH)/../src/templates/c_library_template" \
+		--project-control-file "$(MAKEFILE_PATH)/../src/templates/c_library_template.json"
+
+	cd autopkgtest-mv-c-library && $(git_cheap_init_and_checkin) 
+
+.PHONY: test_c_library_all_automatic_tests
+test_c_library_all_automatic_tests: test_c_library_template_setup
+	cd autopkgtest-mv-c-library && \
+	make -f ExtraMakefile test_c_project_all_automatic && \
+	$(git_porcelain)
+

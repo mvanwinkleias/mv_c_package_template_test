@@ -1,0 +1,21 @@
+# MPI Projects
+
+.PHONY: test_mpi_project_template_clean
+test_mpi_project_template_clean:
+	-rm -rf autopkgtest-mv-c-mpi-project
+
+.PHONY: test_mpi_project_template_setup
+test_mpi_project_template_setup: test_c_project_template_clean
+	cat "$(MAKEFILE_PATH)/c_mpi_project_template_test-answers.txt" | \
+	ias_package_shell.pl \
+		--project-template-dir "$(MAKEFILE_PATH)/../src/templates/c_mpi_project" \
+		--project-control-file "$(MAKEFILE_PATH)/../src/templates/c_mpi_project.json"
+
+	cd autopkgtest-mv-c-mpi-project && $(git_cheap_init_and_checkin)
+
+.PHONY: test_mpi_project_all_automatic_tests
+test_mpi_project_all_automatic_tests: test_mpi_project_template_setup
+	cd autopkgtest-mv-c-mpi-project && \
+	make -f ExtraMakefile test_mpi_project_all_automatic && \
+	$(git_porcelain)
+
