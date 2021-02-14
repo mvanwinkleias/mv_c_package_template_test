@@ -1,6 +1,6 @@
 MAKEFILE_PATH := $(strip $(dir $(firstword $(MAKEFILE_LIST))))
 MAKEFILE_NAME := $(firstword $(MAKEFILE_LIST))
-TESTS_INCLUDE_PATH=$(MAKEFILE_PATH)/make
+TESTS_INCLUDE_PATH=$(MAKEFILE_PATH)
 
 makefile_dir := $(realpath $(MAKEFILE_PATH))
 git_cheap_init_and_checkin := "$(makefile_dir)/cheap_git_init_and_checkin.sh"
