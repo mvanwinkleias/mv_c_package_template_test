@@ -187,6 +187,13 @@ autotools-dev
 autoconf
 texinfo
 debmake
+
+valgrind
+valgrind-mpi
+mpich
+gdb
+texlive
+debmake
 ```
 
 ##### RPM Based Systems
