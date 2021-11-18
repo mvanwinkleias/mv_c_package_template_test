@@ -4,5 +4,6 @@ initialize_project:
 
 .PHONY: test_generic_cmake_all_automatic
 test_generic_cmake_all_automatic:
+	cmake .
 	make
-	build/autopkgtest-generic-cmake --version
+	./autopkgtest-generic-cmake --version

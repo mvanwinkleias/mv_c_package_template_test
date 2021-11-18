@@ -1,0 +1,43 @@
+# [% # This file (as a project template) is inside of the common directory. %]
+
+CMakeCache.txt
+CMakeFiles/
+autopkgtest-generic-cmake
+cmake_install.cmake
+
+Makefile
+version.h
+
+*~
+*.swp
+*.swo
+
+*.glade
+
+build
+debug
+
+
+# Editors
+
+## Dia
+*.dia.autosave
+
+## Emacs
+\#*\#
+.\#*
+
+
+## Vi / Vim
+*.swp
+
+# Filesystem Artifacts
+
+## Mac
+
+.DS_Store
+
+## NFS
+
+.nfs*
+
