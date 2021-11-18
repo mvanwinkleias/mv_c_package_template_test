@@ -19,6 +19,7 @@ config.log
 config.status
 src/.deps/
 src/Makefile
+src/[% project.project_name %]
 src/[% project.project_name %]_runner
 src/*.o
 stamp-h1
@@ -29,6 +30,16 @@ doc/stamp-vti
 doc/version.texi
 doc/*.info
 
+# If you compile things in the project directory, this stuff gets created:
+lib/.deps
+lib/.libs
+lib/*.lo
+lib/*.o
+lib/*.pc
+lib/*.la
+libtool
+src/.libs
+
 *~
 *.swp
 *.swo
@@ -37,6 +48,7 @@ doc/*.info
 
 build
 debug
+
 
 # Editors
 

@@ -9,6 +9,12 @@
 # top-most EditorConfig file
 root = true
 
+# Sensible defaults for everything
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+
 # JavaScript
 [**.js]
 indent_style = space
@@ -52,3 +58,13 @@ indent_style = tab
 indent_style = space
 indent_size = 2
 
+# Diff files
+[*.{diff,patch}]
+trim_trailing_whitespace = false
+
+[*.{cpp,h}]
+end_of_line = crlf
+trim_trailing_whitespace = true
+insert_final_newline = true
+indent_style = tab
+indent_size = 4

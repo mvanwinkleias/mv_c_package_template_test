@@ -40,7 +40,6 @@ lib/*.la
 libtool
 src/.libs
 
-
 *~
 *.swp
 *.swo
@@ -49,6 +48,7 @@ src/.libs
 
 build
 debug
+
 
 # Editors
 
