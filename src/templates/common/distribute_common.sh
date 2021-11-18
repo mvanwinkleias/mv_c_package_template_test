@@ -11,6 +11,7 @@ template_dirs=( \
 	"${script_dir}/../c_project_template/" \
 	"${script_dir}/../c_library_template/" \
 	"${script_dir}/../c_mpi_project/" \
+	"${script_dir}/../c_library_template2/" \
 )
 
 # This (hopefully) will be temporary.  Instead of modifying the
