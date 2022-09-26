@@ -6,6 +6,9 @@ Summary: TODO -- Summary
 License: TODO -- License
 Distribution: TODO -- Distribution
 Group: TODO -- GROUP
+# Url: TODO -- URL
+
+Source0: %{name}-%{version}.tar.gz
 
 # %define _rpmdir ../
 # %define _rpmfilename %%{NAME}-%%{VERSION}-%%{RELEASE}.%%{ARCH}.rpm
@@ -13,6 +16,20 @@ Group: TODO -- GROUP
 
 %description
 TODO -- DESCRIPTION
+
+%prep
+%setup -q
+
+%build
+
+%configure
+make CFLAGS="$RPM_OPT_FLAGS" "CPPFLAGS=$(getconf LFS_CFLAGS)" %{?_smp_mlags}
+
+%install
+rm -rf $RPM_BUILD_ROOT
+
+# make DESTDIR=%{buildroot} install
+%make_install
 
 %files
 "/usr/bin/[% project.project_name %]"
