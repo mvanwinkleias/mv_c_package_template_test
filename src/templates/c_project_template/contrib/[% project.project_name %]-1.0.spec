@@ -15,7 +15,7 @@ Group: TODO -- GROUP
 TODO -- DESCRIPTION
 
 %files
-%dir "/usr/bin/[% project.project_name %]"
+"/usr/bin/[% project.project_name %]"
 %dir "/usr/share/[% project.project_name %]/"
 %dir "/usr/share/[% project.project_name %]/text/"
 "/usr/share/[% project.project_name %]/text/hello.txt"
