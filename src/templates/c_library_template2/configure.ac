@@ -8,7 +8,7 @@ AC_CONFIG_FILES([
  Makefile
  lib/Makefile
  lib/[% project.project_name %].pc
- src/Makefile
+ tests/Makefile
 ])
 AC_CONFIG_MACRO_DIRS([m4])
 
