@@ -1,4 +1,7 @@
-[%# https://github.com/pvanhoof/dir-examples/blob/master/autotools-example/configure.ac %]
+[%# https://github.com/pvanhoof/dir-examples/blob/master/autotools-example/configure.ac
+this was an attempt to understand how to integrate ABI and API version numbering
+with an autotools project.
+%]
 
 [%- DEFAULT
 	debug = 0 ;
