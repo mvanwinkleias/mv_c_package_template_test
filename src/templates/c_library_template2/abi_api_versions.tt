@@ -9,6 +9,7 @@
 				{ name => 'minor' , value => 3, },
 				{ name => 'patch' , value => 0, },
 			],
+			components => [],
 		},
 		'ABI' => {
 			fields => [
@@ -16,6 +17,7 @@
 				{ name => 'revision' , value => 0, },
 				{ name => 'age' , value => 1, },
 			],
+			components => [],
 		},
 	} ;
 	project_name='autotools-test1' ;
@@ -23,6 +25,8 @@
 	
 	project_version_name_lc = project_version_name.lower
 	project_version_name_upper = project_version_name.upper
+
+	
 -%]
 
 [%- IF debug -%]
@@ -38,8 +42,11 @@ dnl project_version_name_upper: [% project_version_name_upper %]
 			project_version_name_lc,
 			version_type,
 			version_field.name,
+			'version',
 			] ;
-		lc_var_name = lc_var_name_fields.join('_') ;
+		lc_var_name = lc_var_name_fields.join('_').lower ;
+
+		versioning.$version_type.components.push(lc_var_name);
 
 	%]
 m4_define([[% lc_var_name  %]], [[%- version_field.value  -%]])
