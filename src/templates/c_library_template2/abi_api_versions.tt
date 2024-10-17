@@ -1,0 +1,38 @@
+[%- DEFAULT
+	versioning = {
+		'API' => [ 
+			{ name => 'major' , value => 4, },
+			{ name => 'minor' , value => 3, },
+			{ name => 'patch' , value => 0, },
+		],
+		'ABI' => [
+			{ name => 'current' , value => 3, },
+			{ name => 'revision' , value => 0, },
+			{ name => 'age' , value => 1, },
+		],
+	} ;
+	project_name='autotools-test1' ;
+	project_version_name = project_name.replace('-','_') ;
+	
+	project_version_name_lc = project_version_name.lower
+	project_version_name_upper = project_version_name.upper
+%]
+
+project_name: [% project_name %]
+project_version_name: [% project_version_name %]
+project_version_name_lc: [% project_version_name_lc %]
+project_version_name_upper: [% project_version_name_upper %]
+
+[%- FOREACH version_type IN versioning.keys.sort -%]
+	[%- FOREACH version_field IN versioning.$version_type ;
+		lc_var_name_fields = [
+			project_version_name_lc,
+			version_type,
+			version_field.name,
+			] ;
+		lc_var_name = lc_var_name_fields.join('_') ;
+
+	%]
+m4_define([[% lc_var_name  %]], [[%- version_field.value  -%]])
+	[%- END %]
+[% END %]
