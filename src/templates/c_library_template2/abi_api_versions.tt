@@ -1,16 +1,22 @@
+[%# https://github.com/pvanhoof/dir-examples/blob/master/autotools-example/configure.ac %]
+
 [%- DEFAULT
 	debug = 0 ;
 	versioning = {
-		'API' => [ 
-			{ name => 'major' , value => 4, },
-			{ name => 'minor' , value => 3, },
-			{ name => 'patch' , value => 0, },
-		],
-		'ABI' => [
-			{ name => 'current' , value => 3, },
-			{ name => 'revision' , value => 0, },
-			{ name => 'age' , value => 1, },
-		],
+		'API' => {
+			fields => [ 
+				{ name => 'major' , value => 4, },
+				{ name => 'minor' , value => 3, },
+				{ name => 'patch' , value => 0, },
+			],
+		},
+		'ABI' => {
+			fields => [
+				{ name => 'current' , value => 3, },
+				{ name => 'revision' , value => 0, },
+				{ name => 'age' , value => 1, },
+			],
+		},
 	} ;
 	project_name='autotools-test1' ;
 	project_version_name = project_name.replace('-','_') ;
@@ -27,7 +33,7 @@ dnl project_version_name_upper: [% project_version_name_upper %]
 [%- END -%]
 
 [%- FOREACH version_type IN versioning.keys.sort -%]
-	[%- FOREACH version_field IN versioning.$version_type ;
+	[%- FOREACH version_field IN versioning.$version_type.fields ;
 		lc_var_name_fields = [
 			project_version_name_lc,
 			version_type,
