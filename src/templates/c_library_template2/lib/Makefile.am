@@ -27,4 +27,6 @@ include_HEADERS = [% project.project_name %].h
 
 lib[% project.package_to_variable_name %]_la_LDFLAGS = -version-info 0:0:0
 
+# -Wl,--version-script=[% project.project_name %].map
+
 # === End Libraries ===
