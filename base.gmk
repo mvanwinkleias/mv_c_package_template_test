@@ -1,9 +1,0 @@
-# Advanced Usage
-# You don't need to edit this file unless you are an advanced user.
-
-ARTIFACT_BASE_NAME = mv-c-package-template-test
-
-ifeq ($(ARTIFACT_NAME),)
-	ARTIFACT_NAME = mv-c-package-template-test
-endif
-

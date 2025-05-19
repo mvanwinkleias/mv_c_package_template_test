@@ -1,5 +1,0 @@
-SHELL=/bin/bash
-PATH=/sbin:/bin:/usr/sbin:/usr/bin
-MAILTO=root@localhost
-
-# 50 6 * * * iasnetauto /opt/IAS/bin/mv-c-package-template-test/mv-c-package-template-test_hello.sh
