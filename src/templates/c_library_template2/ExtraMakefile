@@ -37,6 +37,11 @@ debug_build:
 		&& \
 	make 
 
+.PHONY: make_check
+make_check:
+	cd "$(MAKEFILE_PATH)/debug" && \
+	make check
+
 .PHONY: debug_run
 # In gdb:
 #	layout next
@@ -73,7 +78,7 @@ test_c_project_all_automatic: \
 test_c_project_valgrind: \
 	debug_clean \
 	debug_build \
-	debug_run_valgrind
+	make_check
 
 .PHONY: test_c_project_project_build
 test_c_project_project_build: \
