@@ -6,8 +6,8 @@ dnl AC_PROG_CXX
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_FILES([
  Makefile
- lib/Makefile
- lib/[% project.project_name %].pc
+ src/lib/Makefile
+ src/lib/[% project.project_name %].pc
  tests/Makefile
 ])
 AC_CONFIG_MACRO_DIRS([m4])
