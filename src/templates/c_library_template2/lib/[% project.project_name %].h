@@ -1,6 +1,8 @@
 #ifndef [% project.package_to_variable_name %]__
 #define [% project.package_to_variable_name %]__
 
+#include <stdio.h>
+
 extern void [% project.package_to_variable_name %]_hello(void);
 
 #endif // [% project.package_to_variable_name %]__

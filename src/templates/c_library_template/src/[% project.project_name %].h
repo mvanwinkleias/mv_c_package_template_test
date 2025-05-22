@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 #ifndef [% project.package_to_variable_name %]__
 #define [% project.package_to_variable_name %]__
 
