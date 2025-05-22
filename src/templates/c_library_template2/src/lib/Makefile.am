@@ -25,7 +25,8 @@ lib[% project.package_to_variable_name %]_la_SOURCES = \
 
 include_HEADERS = [% project.project_name %].h
 
-lib[% project.package_to_variable_name %]_la_LDFLAGS = -version-info 0:0:0
+lib[% project.package_to_variable_name %]_la_LDFLAGS = -version-info 0:0:0 \
+	--version-script=[% project.project_name %].map
 
 # -Wl,--version-script=[% project.project_name %].map
 
