@@ -21,14 +21,14 @@ lib_LTLIBRARIES = lib[% project.project_name %].la
 
 lib[% project.package_to_variable_name %]_la_SOURCES = \
 	[% project.project_name %].c \
-	[% project.project_name %].h
+	[% project.project_name %].h \
+	[% project.project_name %].map 
 
 include_HEADERS = [% project.project_name %].h
 
+# Please see
+# https://www.gnu.org/software/gnulib/manual/html_node/LD-Version-Scripts.html
 # This shows how to use libtool's abi versioning (I think)
-lib[% project.package_to_variable_name %]_la_LDFLAGS = -version-info 0:0:0
-# Here's how you might use ld's abi versioning, but
-# when using this version map script ld complains about missing symbols
-#	-Wl,--version-script=$(top_srcdir)/src/lib/[% project.project_name %].map
+lib[% project.package_to_variable_name %]_la_LDFLAGS = -Wl,--version-script=$(srcdir)/[% project.project_name %].map
 
 # === End Libraries ===
