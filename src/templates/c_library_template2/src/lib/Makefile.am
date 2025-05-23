@@ -25,9 +25,10 @@ lib[% project.package_to_variable_name %]_la_SOURCES = \
 
 include_HEADERS = [% project.project_name %].h
 
-lib[% project.package_to_variable_name %]_la_LDFLAGS = -version-info 0:0:0 \
-	--version-script=[% project.project_name %].map
-
-# -Wl,--version-script=[% project.project_name %].map
+# This shows how to use libtool's abi versioning (I think)
+lib[% project.package_to_variable_name %]_la_LDFLAGS = -version-info 0:0:0
+# Here's how you might use ld's abi versioning, but
+# when using this version map script ld complains about missing symbols
+#	-Wl,--version-script=$(top_srcdir)/src/lib/[% project.project_name %].map
 
 # === End Libraries ===
