@@ -4,7 +4,7 @@ Please see:
 
 */
 
-{
+[% project.project_name.replace('-','_') FILTER upper %]_1.0 {
 	global: *;
 	/* libfoo_init; libfoo_doit; libfoo_done; */
 	local: *;
