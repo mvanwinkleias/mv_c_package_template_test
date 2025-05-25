@@ -26,9 +26,23 @@ lib[% project.package_to_variable_name %]_la_SOURCES = \
 
 include_HEADERS = [% project.project_name %].h
 
-# Please see
-# https://www.gnu.org/software/gnulib/manual/html_node/LD-Version-Scripts.html
-# This shows how to use libtool's abi versioning (I think)
-lib[% project.package_to_variable_name %]_la_LDFLAGS = -Wl,--version-script=$(srcdir)/[% project.project_name %].map
+# If we don't initialize this, we can't use += later, so
+# we just assume this is the only place where this variable is initailzed.
+lib[% project.package_to_variable_name %]_la_LDFLAGS = ''
+# You can use ```objdump -T``` to check the version info of the symbols of the resulting
+# .so file(s)
+
+# This is how to use ldd version scripts for the ABI.
+# See
+# * https://www.gnu.org/software/gnulib/manual/html_node/LD-Version-Scripts.html
+lib[% project.package_to_variable_name %]_la_LDFLAGS += -Wl,--version-script=$(srcdir)/[% project.project_name %].map
+
+[% IF 0 == 1 %]
+
+# I ran into this some time ago and don't entirely understand what it's for.
+# This is a stub for me to remember.
+# lib[% project.package_to_variable_name %]_la_LDFLAGS += -version-info 0:0:0
+
+[% END %]
 
 # === End Libraries ===
