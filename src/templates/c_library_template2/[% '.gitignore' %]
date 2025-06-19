@@ -30,6 +30,7 @@ doc/stamp-vti
 doc/version.texi
 doc/*.info
 
+
 # If you compile things in the project directory, this stuff gets created:
 lib/.deps
 lib/.libs
