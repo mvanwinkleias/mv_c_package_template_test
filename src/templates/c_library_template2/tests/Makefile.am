@@ -25,7 +25,6 @@ TESTS = $(check_PROGRAMS)
 # Needed, as per:
 # https://www.gnu.org/software/automake/manual/html_node/Objects-created-both-with-libtool-and-without.html
 test[% project.package_to_variable_name %]_CFLAGS = $(AM_CFLAGS)
-# Included for completeness:
 test[% project.package_to_variable_name %]_LDFLAGS = $(AM_LDFLAGS)
 
 # === End Programs ===
