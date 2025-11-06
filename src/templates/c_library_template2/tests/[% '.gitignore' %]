@@ -9,4 +9,4 @@
 
 *.trs
 
-test[% project.project_name %]
+check*
