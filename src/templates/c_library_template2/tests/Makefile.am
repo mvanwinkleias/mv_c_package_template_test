@@ -17,15 +17,15 @@ AM_CFLAGS += -l[% project.project_name %]
 
 # === Programs ===
 
-check_PROGRAMS = check[% project.project_name %] 
-check[% project.package_to_variable_name %]_SOURCES = \
-	test[% project.project_name %].c
+check_PROGRAMS = check_[% project.project_name %] 
+check_[% project.package_to_variable_name %]_SOURCES = \
+	test_[% project.project_name %].c
 TESTS = $(check_PROGRAMS)
 
 # Needed, as per:
 # https://www.gnu.org/software/automake/manual/html_node/Objects-created-both-with-libtool-and-without.html
-check[% project.package_to_variable_name %]_CFLAGS = $(AM_CFLAGS)
-check[% project.package_to_variable_name %]_LDFLAGS = $(AM_LDFLAGS)
+check_[% project.package_to_variable_name %]_CFLAGS = $(AM_CFLAGS)
+check_[% project.package_to_variable_name %]_LDFLAGS = $(AM_LDFLAGS)
 
 # === End Programs ===
 
