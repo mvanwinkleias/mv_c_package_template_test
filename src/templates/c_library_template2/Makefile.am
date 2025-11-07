@@ -1,5 +1,5 @@
 ACLOCAL_AMFLAGS = -I m4
-SUBDIRS = src/lib tests
+SUBDIRS = src/lib src/test tests
 dist_doc_DATA = README.md
 
 dist_man_MANS = doc/[% project.project_name %].1 \
