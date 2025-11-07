@@ -25,6 +25,10 @@ test_project_build:
 	make dist-gzip && \
 	debmake -a [% project.project_name %]-*.tar.gz -i "debuild -i -us -uc -b"
 
+.PHONY: make_check
+make_check:
+	cd "$(MAKEFILE_PATH)/debug" && \
+	make check
 
 .PHONY: debug_build
 # These flags are recommended if / when you use valgrind, or GDB
@@ -37,12 +41,16 @@ debug_build:
 		&& \
 	make 
 
-.PHONY: make_check
-make_check:
-	cd "$(MAKEFILE_PATH)/debug" && \
-	make check
+.PHONY: debug_clean
+debug_clean:
+	-cd "$(MAKEFILE_PATH)/debug" && make distclean
+	-rm -r "$(MAKEFILE_PATH)/debug/"*
 
-.PHONY: debug_run
+.PHONY: debug_gdb_check
+debug_gdb_check:
+	cd "$(MAKEFILE_PATH)/debug/tests" && \
+	gdb "check_[% project.project_name %]"
+
 # In gdb:
 #	layout next
 #	list
@@ -54,34 +62,22 @@ make_check:
 #  	ctrl + c - halt
 # 	n (next) - next line
 # 	step - descend
-debug_run:
-	cd "$(MAKEFILE_PATH)/debug/src" && \
-	gdb [% project.project_name %]
 
-.PHONY: debug_run_valgrind
-debug_run_valgrind:
-	cd "$(MAKEFILE_PATH)/debug/src" && \
-	valgrind ./[% project.project_name %]_runner
+.PHONY: debug_valgrind_check
+debug_valgrind_check: \
+	debug_clean \
+	debug_build \
+	make_check \
+
+	cd "$(MAKEFILE_PATH)/debug/tests/" && \
+		ls
+
+	cd "$(MAKEFILE_PATH)/debug/tests" && \
+	valgrind ./"check_[% project.project_name %]"
 	
 
-.PHONY: debug_clean
-debug_clean:
-	-cd "$(MAKEFILE_PATH)/debug" && make distclean
-	-rm -r "$(MAKEFILE_PATH)/debug/"*
 
 .PHONY: test_c_project_all_automatic
 test_c_project_all_automatic: \
-	test_c_project_valgrind \
-	test_c_project_project_build
+	debug_valgrind_check \
 	
-.PHONY: test_c_project_valgrind
-test_c_project_valgrind: \
-	debug_clean \
-	debug_build \
-	make_check
-
-.PHONY: test_c_project_project_build
-test_c_project_project_build: \
-	debug_clean \
-	test_project_build
-
