@@ -188,7 +188,6 @@ autoconf
 texinfo
 debmake
 debhelper-compat
-libtool-bin
 
 valgrind
 valgrind-mpi

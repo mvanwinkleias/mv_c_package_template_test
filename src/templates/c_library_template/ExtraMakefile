@@ -51,12 +51,12 @@ debug_build:
 # 	step - descend
 debug_run:
 	cd "$(MAKEFILE_PATH)/debug/src" && \
-	gdb [% project.project_name %]
+	libtool --mode=execute gdb [% project.project_name %]
 
 .PHONY: debug_run_valgrind
 debug_run_valgrind:
 	cd "$(MAKEFILE_PATH)/debug/src" && \
-	valgrind ./[% project.project_name %]_runner
+	libtool --mode=execute valgrind ./[% project.project_name %]_runner
 	
 
 .PHONY: debug_clean
