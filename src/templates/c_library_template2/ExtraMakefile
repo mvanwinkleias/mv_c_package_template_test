@@ -30,6 +30,7 @@ make_check:
 	cd "$(MAKEFILE_PATH)/debug" && \
 	make check
 
+
 .PHONY: debug_build
 # These flags are recommended if / when you use valgrind, or GDB
 debug_build:
@@ -46,10 +47,20 @@ debug_clean:
 	-cd "$(MAKEFILE_PATH)/debug" && make distclean
 	-rm -r "$(MAKEFILE_PATH)/debug/"*
 
+# This compiles our tests without running them
+.PHONY: make_debug_check_empty_tests
+make_debug_check_empty_tests: \
+	debug_build \
+
+	cd "$(MAKEFILE_PATH)/debug/" && \
+	make check TESTS=
+
 .PHONY: debug_gdb_check
-debug_gdb_check:
-	cd "$(MAKEFILE_PATH)/debug/tests" && \
-	libtool --mode=execute gdb "check_[% project.project_name %]"
+debug_gdb_check: \
+	make_debug_check_empty_tests \
+
+	cd "$(MAKEFILE_PATH)/debug/" && \
+	./libtool --mode=execute gdb ./tests/"check_[% project.project_name %]"
 
 # In gdb:
 #	layout next
@@ -65,12 +76,10 @@ debug_gdb_check:
 
 .PHONY: debug_valgrind_check
 debug_valgrind_check: \
-	debug_clean \
-	debug_build \
-	make_check \
+	make_debug_check_empty_tests \
 
-	cd "$(MAKEFILE_PATH)/debug/tests" && \
-	libtool --mode=execute valgrind ./"check_[% project.project_name %]"
+	cd "$(MAKEFILE_PATH)/debug/" && \
+	./libtool --mode=execute valgrind ./tests/"check_[% project.project_name %]"
 	
 
 
