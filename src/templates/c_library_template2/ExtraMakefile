@@ -49,7 +49,7 @@ debug_clean:
 .PHONY: debug_gdb_check
 debug_gdb_check:
 	cd "$(MAKEFILE_PATH)/debug/tests" && \
-	gdb "check_[% project.project_name %]"
+	libtool --mode=execute gdb "check_[% project.project_name %]"
 
 # In gdb:
 #	layout next
@@ -69,11 +69,8 @@ debug_valgrind_check: \
 	debug_build \
 	make_check \
 
-	cd "$(MAKEFILE_PATH)/debug/tests/" && \
-		ls
-
 	cd "$(MAKEFILE_PATH)/debug/tests" && \
-	valgrind ./"check_[% project.project_name %]"
+	libtool --mode=execute valgrind ./"check_[% project.project_name %]"
 	
 
 
