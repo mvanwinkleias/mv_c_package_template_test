@@ -31,16 +31,19 @@ make_check:
 	make check
 
 
-.PHONY: debug_build
+.PHONY: debug_configure
 # These flags are recommended if / when you use valgrind, or GDB
-debug_build:
+debug_configure:
 	cd "$(MAKEFILE_PATH)/debug" && \
 	../configure \
 		--prefix="$$(pwd)/install" \
 		CPPFLAGS=-DDEBUG \
 		CFLAGS="-g -O0" \
-		&& \
-	make 
+
+.PHONY: debug_build
+debug_build:
+	cd "$(MAKEFILE_PATH)/debug" && \
+		make
 
 .PHONY: debug_clean
 debug_clean:
@@ -85,5 +88,6 @@ debug_valgrind_check: \
 
 .PHONY: test_c_project_all_automatic
 test_c_project_all_automatic: \
+	debug_configure \
 	debug_valgrind_check \
 	
