@@ -63,12 +63,19 @@ make_debug_check_empty_tests: \
 	cd "$(MAKEFILE_PATH)/debug/" && \
 	make check TESTS=
 
+.PHONY: debug_primary_check_run
+debug_primary_check_run: \
+	debug_build \
+
+	cd "$(MAKEFILE_PATH)/debug/" && \
+		./tests/"check_[% project.project_name %]"
+
 .PHONY: debug_gdb_check
 debug_gdb_check: \
 	make_debug_check_empty_tests \
 
 	cd "$(MAKEFILE_PATH)/debug/" && \
-	./libtool --mode=execute gdb ./tests/"check_[% project.project_name %]"
+		./libtool --mode=execute gdb ./tests/"check_[% project.project_name %]"
 
 # In gdb:
 #	layout next
@@ -94,6 +101,8 @@ debug_valgrind_check: \
 .PHONY: test_c_project_all_automatic
 test_c_project_all_automatic: \
 	debug_configure \
+	make_debug_check_empty_tests \
+	debug_primary_check_run \
 	debug_check \
 	debug_valgrind_check \
 	
