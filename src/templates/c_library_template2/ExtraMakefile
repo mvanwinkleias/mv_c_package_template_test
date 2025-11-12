@@ -45,6 +45,11 @@ debug_build:
 	cd "$(MAKEFILE_PATH)/debug" && \
 		make
 
+.PHONY: debug_check
+debug_check:
+	cd "$(MAKEFILE_PATH)/debug" && \
+		make check
+
 .PHONY: debug_clean
 debug_clean:
 	-cd "$(MAKEFILE_PATH)/debug" && make distclean
@@ -89,5 +94,6 @@ debug_valgrind_check: \
 .PHONY: test_c_project_all_automatic
 test_c_project_all_automatic: \
 	debug_configure \
+	debug_check \
 	debug_valgrind_check \
 	
