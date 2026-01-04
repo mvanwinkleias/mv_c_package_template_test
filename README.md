@@ -195,6 +195,9 @@ mpich
 gdb
 texlive
 debmake
+
+pkg-config
+cmake
 ```
 
 ##### RPM Based Systems
