@@ -1,7 +1,7 @@
 # .POSIX might be a good idea.
 .POSIX:
 AM_CFLAGS = -std=c99 -pedantic -D_POSIX_C_SOURCE=200809L -Wall -Wextra -I$(top_srcdir)/src/lib
-AM_LDFLAGS = -L../src/lib
+AM_LDFLAGS = -L../lib
 
 # This might be how to add CPP stuff
 # AM_CPPFLAGS =  -pedantic -Wall -Wextra
